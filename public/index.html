@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Dates Finder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-calendar-alt"></i> Exam Dates Finder</h1>
+            <p>Find your exam day based on subject, gender, and section</p>
+        </header>
+
+        <main class="main-content">
+            <div class="search-card">
+                <h2>Search Exam Schedule</h2>
+                <form id="examForm" class="exam-form">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="Physics">Physics</option>
+                            <option value="MATH">MATH</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <select id="section" name="section" required>
+                            <option value="">Select Section</option>
+                            <option value="A">Section A</option>
+                            <option value="B">Section B</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i> Find Exam Day
+                    </button>
+                </form>
+            </div>
+
+            <div id="result" class="result-card" style="display: none;">
+                <h3>Exam Schedule Found!</h3>
+                <div class="result-content">
+                    <div class="result-item">
+                        <span class="label">Subject:</span>
+                        <span id="resultSubject" class="value"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Gender:</span>
+                        <span id="resultGender" class="value"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Section:</span>
+                        <span id="resultSection" class="value"></span>
+                    </div>
+                    <div class="result-item highlight">
+                        <span class="label">Exam Day:</span>
+                        <span id="resultDay" class="value"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error" class="error-card" style="display: none;">
+                <h3><i class="fas fa-exclamation-triangle"></i> No Schedule Found</h3>
+                <p id="errorMessage"></p>
+            </div>
+
+            <div class="schedule-toggle">
+                <button id="toggleSchedule" class="toggle-btn">
+                    <i class="fas fa-table"></i> Show Complete Schedule
+                </button>
+            </div>
+
+            <div id="scheduleTable" class="schedule-table" style="display: none;">
+                <h3>Complete Exam Schedule</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Gender</th>
+                                <th>Section</th>
+                                <th>Day</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="api-info">
+                <h4>API Endpoints</h4>
+                <div class="endpoint">
+                    <code>GET /api/schedule</code> - Get all schedules
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/find-day?subject=Physics&gender=M&section=A</code> - Find day by query params
+                </div>
+                <div class="endpoint">
+                    <code>POST /api/find-day</code> - Find day by request body
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/subjects</code> - Get available subjects
+                </div>
+                <div class="endpoint">
+                    <code>GET /api/sections</code> - Get available sections
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
