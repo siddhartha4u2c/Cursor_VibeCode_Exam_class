@@ -219,7 +219,7 @@ If you have any questions or need help, please:
 2. Review the API documentation
 3. Check the browser console for errors
 4. Ensure all dependencies are properly installed
-
+# Deployed at https://cursor-vibecode-exam-class.onrender.com/
 ---
 
 **Happy Exam Planning! 📚✨**
